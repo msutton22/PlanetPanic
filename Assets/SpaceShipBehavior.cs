@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpaceShipBehavior : MonoBehaviour {
-	public float speed;
-	SpriteRenderer spaceship;
+	public float speed; //variable for speed of the spaceship
+	SpriteRenderer spaceship; //sprite renderer for spaceship
 
-	public GameObject projectilePrefabs;
-	private List <GameObject> Projectiles = new List<GameObject> ();
-	private float projectileVelocity;
+	public GameObject projectilePrefabs; //Adding Prefab of projectiles
+	private List <GameObject> Projectiles = new List<GameObject> ();  //creating a list of projectile objects
+	private float projectileVelocity; //variable for velocity of the projectiles
 	// Use this for initialization
 	void Start () {
-		spaceship = this.GetComponent<SpriteRenderer> ();
-		projectileVelocity = 5;
+		spaceship = this.GetComponent<SpriteRenderer> (); // creating sprite renderer for spaceship
+		projectileVelocity = 5; //stating projectile velocity
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetButtonDown ("Jump")) 
+		if (Input.GetButtonDown ("Jump"))  //if the spacebar is pressed 
 		{
 			GameObject bullet = (GameObject)Instantiate (projectilePrefabs, transform.position, Quaternion.identity);
 			Projectiles.Add (bullet);
