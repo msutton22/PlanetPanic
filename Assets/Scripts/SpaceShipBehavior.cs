@@ -45,4 +45,13 @@ public class SpaceShipBehavior : MonoBehaviour {
 			this.GetComponent<Transform> ().Translate (new Vector3 (-speed, 0));	//spaceship willl move left at a negative speed dictated elsewhere
 		}
 	}
+
+
+void OnCollisionEnter2D(Collision2D collision) //when you collide with enemy
+{
+
+	if (collision.gameObject.tag.Equals ("badGuy")) { //if the player collides with a enemey
+		Destroy (collision.gameObject); //get rid of that enemy
+	}
+}
 }
