@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpaceShipBehavior : MonoBehaviour {
 	public float speed; //variable for speed of the spaceship
 	SpriteRenderer spaceship; //sprite renderer for spaceship
+	public float score = 0; //score holder
 
+	public GameObject scoreInGame; //adding game object for score text
 	public GameObject projectilePrefabs; //Adding Prefab of projectiles
 	private List <GameObject> Projectiles = new List<GameObject> ();  //creating a list of projectile objects
 	private float projectileVelocity; //variable for velocity of the projectiles
@@ -17,7 +20,8 @@ public class SpaceShipBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		score += Time.deltaTime; //score will increase each second 
+		scoreInGame.gameObject.GetComponent<Text>().text = ("Score: " + (int)score); //checking score every frame and printing in textbox what it is
 		if (Input.GetButtonDown ("Jump"))  //if the spacebar is pressed 
 		{
 			GameObject bullet = (GameObject)Instantiate (projectilePrefabs, transform.position, Quaternion.identity); //create a projectile object in the current position
@@ -43,6 +47,7 @@ public class SpaceShipBehavior : MonoBehaviour {
 
 		if (Input.GetKey (KeyCode.LeftArrow)) { //if left arrow is pressed
 			this.GetComponent<Transform> ().Translate (new Vector3 (-speed, 0));	//spaceship willl move left at a negative speed dictated elsewhere
+
 		}
 	}
 
@@ -52,6 +57,7 @@ void OnCollisionEnter2D(Collision2D collision) //when you collide with enemy
 
 	if (collision.gameObject.tag.Equals ("badGuy")) { //if the player collides with a enemey
 		Destroy (collision.gameObject); //get rid of that enemy
+
 	}
 }
 }
