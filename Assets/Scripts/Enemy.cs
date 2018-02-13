@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour {
 	public int speed; //speed of enemies moving
 	public int xMoveDirection; //direction that enemies will go
+
+
 	// Use this for initialization
 	void Start () {
-
 	}
 	
 	// Update is called once per frame
@@ -19,6 +20,8 @@ public class Enemy : MonoBehaviour {
 			xMoveDirection = 1; //else moving forward
 		}
 		gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (xMoveDirection, 0) * speed; //game object velocity moving
+
+	
 
 	}
 
