@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SpaceShipBehavior : MonoBehaviour {
 	public float speed; //variable for speed of the spaceship
@@ -62,6 +63,7 @@ void OnCollisionEnter2D(Collision2D collision) //when you collide with enemy
 		if (collision.gameObject.tag.Equals ("bullet2")) { //if the player collides with a bullet
 			Destroy (collision.gameObject); //get rid of that bullet
 			Destroy(gameObject); //destroy player
+			SceneManager.LoadScene (2); //if the player dies, go to end screen
 
 		}
 }
