@@ -21,7 +21,7 @@ public class SpaceShipBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		score += Time.deltaTime; //score will increase each second 
-		scoreInGame.gameObject.GetComponent<Text>().text = ("Time Alive: " + (int)score); //checking score every frame and printing in textbox what it is
+		scoreInGame.gameObject.GetComponent<Text>().text = ("Score: " + (int)score); //checking score every frame and printing in textbox what it is
 		if (Input.GetButtonDown ("Jump"))  //if the spacebar is pressed 
 		{
 			GameObject bullet = (GameObject)Instantiate (projectilePrefabs, transform.position, Quaternion.identity); //create a projectile object in the current position
@@ -59,5 +59,13 @@ void OnCollisionEnter2D(Collision2D collision) //when you collide with enemy
 		Destroy (collision.gameObject); //get rid of that enemy
 
 	}
+		if (collision.gameObject.tag.Equals ("bullet2")) { //if the player collides with a bullet
+			Destroy (collision.gameObject); //get rid of that bullet
+			Destroy(gameObject); //destroy player
+
+		}
 }
+
+
+
 }

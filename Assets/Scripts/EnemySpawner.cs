@@ -7,8 +7,11 @@ public class EnemySpawner : MonoBehaviour {
 	float randX; //random variable for x
 	float randY;  //random variable for y
 	Vector2 whereToSpawn; //Vector to show where the enemy will spawn
-	public float spawnRate = 2f; //the rate at which enemies will spawn
+	public float spawnRate = 1f; //the rate at which enemies will spawn
 	float nextSpawn = 0.0f;  //keeping track of time to next enemy
+
+
+
 
 	// Use this for initialization
 	void Start () {

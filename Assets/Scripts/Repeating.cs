@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Repeating : MonoBehaviour {
 
-	private float m_BackgroundSize;
+	private float BackgroundSize; 
 	// Use this for initialization
 	void Start () {
 
-		m_BackgroundSize = 10.2f;
+		BackgroundSize = 10.2f; //size of one of the background images
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y < -m_BackgroundSize)
-			RepeatBackground ();
+		if (transform.position.y < -BackgroundSize) //if getting to the end of a background
+			RepeatBackground (); // perform function
 	}
 
 	void RepeatBackground() {
-		Vector2 BGoffset = new Vector2 (0, m_BackgroundSize * 2f );
-		transform.position = (Vector2)transform.position + BGoffset;
+		Vector2 BGoffset = new Vector2 (0, BackgroundSize * 2f ); //telling how where to reapeat the background
+		transform.position = (Vector2)transform.position + BGoffset; //creating repeat of background
 	}
 }

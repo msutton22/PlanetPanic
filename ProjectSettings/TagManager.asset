@@ -6,6 +6,7 @@ TagManager:
   tags:
   - badGuy
   - bullet
+  - bullet2
   layers:
   - Default
   - TransparentFX
