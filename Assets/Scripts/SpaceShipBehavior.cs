@@ -50,6 +50,12 @@ public class SpaceShipBehavior : MonoBehaviour {
 			this.GetComponent<Transform> ().Translate (new Vector3 (-speed, 0));	//spaceship willl move left at a negative speed dictated elsewhere
 
 		}
+		if (Input.GetKey (KeyCode.UpArrow)) {
+			this.GetComponent<Transform> ().Translate (new Vector3 (0, speed));	//spaceship willl move up at a positive speed dictated elsewhere		
+		}
+		if (Input.GetKey (KeyCode.DownArrow)) {
+			this.GetComponent<Transform> ().Translate (new Vector3 (0, -speed));	//spaceship willl move down at a negative speed dictated elsewhere		
+		}
 	}
 
 
