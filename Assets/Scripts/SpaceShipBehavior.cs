@@ -6,17 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class SpaceShipBehavior : MonoBehaviour {
 	public float speed; //variable for speed of the spaceship
-	SpriteRenderer spaceship; //sprite renderer for spaceship
 	public float score = 0; //score holder
-
 	public GameObject scoreInGame; //adding game object for score text
 	public GameObject projectilePrefabs; //Adding Prefab of projectiles
 	private List <GameObject> Projectiles = new List<GameObject> ();  //creating a list of projectile objects
 	private float projectileVelocity; //variable for velocity of the projectiles
 	// Use this for initialization
 	void Start () {
-		spaceship = this.GetComponent<SpriteRenderer> (); // creating sprite renderer for spaceship
 		projectileVelocity = 5; //stating projectile velocity
+		DontDestroyOnLoad (gameObject);
 	}
 	
 	// Update is called once per frame
@@ -60,21 +58,22 @@ public class SpaceShipBehavior : MonoBehaviour {
 
 
 void OnCollisionEnter2D(Collision2D collision) //when you collide with enemy
-{
+	{
+		PlayerPrefs.SetFloat ("Score", (int)score);
+		if (collision.gameObject.tag.Equals ("badGuy")) { //if the player collides with a enemey
+			Destroy (collision.gameObject); //get rid of that enemy
+			Destroy (gameObject);
+			SceneManager.LoadScene (2);
 
-	if (collision.gameObject.tag.Equals ("badGuy")) { //if the player collides with a enemey
-		Destroy (collision.gameObject); //get rid of that enemy
-		Destroy(gameObject);
-		SceneManager.LoadScene (2);
-
-	}
+		}
 		if (collision.gameObject.tag.Equals ("bullet2")) { //if the player collides with a bullet
 			Destroy (collision.gameObject); //get rid of that bullet
-			Destroy(gameObject); //destroy player
+			Destroy (gameObject); //destroy player
 			SceneManager.LoadScene (2); //if the player dies, go to end screen
 
 		}
-}
+			
+	}
 
 
 
