@@ -64,6 +64,8 @@ void OnCollisionEnter2D(Collision2D collision) //when you collide with enemy
 
 	if (collision.gameObject.tag.Equals ("badGuy")) { //if the player collides with a enemey
 		Destroy (collision.gameObject); //get rid of that enemy
+		Destroy(gameObject);
+		SceneManager.LoadScene (2);
 
 	}
 		if (collision.gameObject.tag.Equals ("bullet2")) { //if the player collides with a bullet

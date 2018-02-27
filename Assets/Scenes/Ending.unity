@@ -315,7 +315,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Click Here to Try Again
+  m_Text: Click Here to Try Again (or Press Space)
 --- !u!222 &630092497
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -747,7 +747,7 @@ RectTransform:
   m_GameObject: {fileID: 1513747559}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.023201857, y: 0.023201857, z: 0.023201857}
+  m_LocalScale: {x: 0.023310022, y: 0.023310022, z: 0.023310022}
   m_Children:
   - {fileID: 904392509}
   - {fileID: 805380309}
