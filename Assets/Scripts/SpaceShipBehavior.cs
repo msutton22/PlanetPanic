@@ -13,7 +13,7 @@ public class SpaceShipBehavior : MonoBehaviour {
 	private float projectileVelocity; //variable for velocity of the projectiles
 	// Use this for initialization
 	void Start () {
-		projectileVelocity = 5; //stating projectile velocity
+		projectileVelocity = 6; //stating projectile velocity
 		DontDestroyOnLoad (gameObject);
 	}
 	
