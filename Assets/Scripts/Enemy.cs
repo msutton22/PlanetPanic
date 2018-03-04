@@ -6,21 +6,21 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour {
 	public int speed; //speed of enemies moving
 	public int xMoveDirection; //direction that enemies will go
-	private List<GameObject> Projectiles2 = new List<GameObject>();
-	private float projectileVelocity;
-	public GameObject projectile2Prefab;
-	float nextSpawn = 0.0f;  
-	public float spawnRate = 1f; 
-
+	private List<GameObject> Projectiles2 = new List<GameObject>(); //creating projectiles for enemy 
+	private float projectileVelocity = 2; //velocity variable for projectiles
+	public GameObject projectile2Prefab; //prefab for projectiles
+	float nextSpawn = 0.0f;  //time for next spawn
+	public float spawnRate; //rate at which enemies will spawn
+	public float timer = 0.0f;
 
 
 	// Use this for initialization
 	void Start () {
-		projectileVelocity = 3;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if (xMoveDirection > 0) { //checking if direction is bigger than 0
 			xMoveDirection = -1; //if so, will turn the opposite directions
 		} else {
@@ -31,7 +31,9 @@ public class Enemy : MonoBehaviour {
 		if (Time.time > nextSpawn) {
 			nextSpawn = Time.time + spawnRate; // The time it takes for a new enemy to spawn
 			GameObject bullet = (GameObject)Instantiate (projectile2Prefab, transform.position, Quaternion.identity);
-			Projectiles2.Add (bullet);
+			Projectiles2.Add (bullet); //adding bullets to the scene
+			projectileVelocity += 0.2f;
+
 		}
 		for (int i = 0; i < Projectiles2.Count; i++) {
 			GameObject goBullet = Projectiles2 [i];
@@ -50,8 +52,9 @@ public class Enemy : MonoBehaviour {
 	{
 		if (collision.gameObject.tag.Equals ("bullet")) { //if the enemy collides with a bullet
 			Destroy (collision.gameObject); //get rid of that bullet
-			Destroy(gameObject); //destroy enemy
+			Destroy(gameObject); //destroy enemy		
+
+			}
 		}
 	}
 
-}

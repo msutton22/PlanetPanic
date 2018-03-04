@@ -12,9 +12,7 @@ public class Instructions : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey (KeyCode.Space)) { 
-			SceneManager.LoadScene (0);
-		}
+
 	}
 
 	public void PlayGame() {

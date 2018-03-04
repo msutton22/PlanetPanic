@@ -1027,7 +1027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bf4357e93024d2a9e8e3df991e0b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.17
   score: 0
   scoreInGame: {fileID: 390521514}
   projectilePrefabs: {fileID: 1988335052762728, guid: 43c418463f60447318e005f91526459a,
@@ -1161,8 +1161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78f946379c234d4f8c9cfc4681ac92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  scoreInGame: {fileID: 390521514}
 --- !u!4 &1864401881
 Transform:
   m_ObjectHideFlags: 0

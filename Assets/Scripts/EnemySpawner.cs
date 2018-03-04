@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour {
 	Vector2 whereToSpawn; //Vector to show where the enemy will spawn
 	public float spawnRate = 1f; //the rate at which enemies will spawn
 	float nextSpawn = 0.0f;  //keeping track of time to next enemy
+	public float timer = 0.0f; //timer to keep track of when to perform actions
 
 
 
@@ -17,9 +18,19 @@ public class EnemySpawner : MonoBehaviour {
 	void Start () {
 		
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
+		timer += Time.deltaTime; //timer will increase each second 
+		if (timer < 5) { //checks to see the time of the game. At certain intervals, spawning will increase
+			spawnRate = 2f;
+		} else if (timer < 15) {
+			spawnRate = 1.5f;
+		} else if (timer < 40) {
+			spawnRate = 1.0f;
+		} else if (timer < 50) {
+			spawnRate = 0.5f;
+		}
 		if (Time.time > nextSpawn) { //checking if new enemy should be spawned
 			nextSpawn = Time.time + spawnRate; // The time it takes for a new enemy to spawn
 			randX = Random.Range (-8.4f, 8.4f); //finding a random x value in a range
