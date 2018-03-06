@@ -8,6 +8,7 @@ TagManager:
   - bullet
   - bullet2
   - GameManager
+  - ground
   layers:
   - Default
   - TransparentFX

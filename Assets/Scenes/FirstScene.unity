@@ -405,6 +405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1517122830515634, guid: 39776200e3740465cb95806788eddbed, type: 2}
   spawnRate: 2
+  timer: 0
 --- !u!4 &658800548
 Transform:
   m_ObjectHideFlags: 0
@@ -717,7 +718,7 @@ GameObject:
   - component: {fileID: 1596300954}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -816,7 +817,7 @@ GameObject:
   - component: {fileID: 1612165676}
   m_Layer: 0
   m_Name: Side2
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1186,7 +1187,7 @@ GameObject:
   - component: {fileID: 1887544964}
   m_Layer: 0
   m_Name: Roof
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1285,7 +1286,7 @@ GameObject:
   - component: {fileID: 1889702768}
   m_Layer: 0
   m_Name: Side1
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
