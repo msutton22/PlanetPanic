@@ -8,7 +8,7 @@ public class Repeating : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		BackgroundSize = 28.46f; //size of one of the background images
+		BackgroundSize = 28.48f; //size of one of the background images
 	}
 	
 	// Update is called once per frame
