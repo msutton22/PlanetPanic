@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
+	public AudioSource Explosion;
 	public int speed; //speed of enemies moving
 	public int xMoveDirection; //direction that enemies will go
 	private List<GameObject> Projectiles2 = new List<GameObject>(); //creating projectiles for enemy 
@@ -51,8 +52,9 @@ public class Enemy : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision) //when enemy collides with a bullet
 	{
 		if (collision.gameObject.tag.Equals ("bullet")) { //if the enemy collides with a bullet
-			Destroy (collision.gameObject); //get rid of that bullet
-			Destroy(gameObject); //destroy enemy		
+			Explosion.Play();
+			Destroy (collision.gameObject ); //get rid of that bullet
+			Destroy(gameObject, Explosion.clip.length); //destroy enemy		
 
 			}
 		}

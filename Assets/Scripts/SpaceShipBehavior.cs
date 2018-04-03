@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SpaceShipBehavior : MonoBehaviour {
+	public AudioSource Shoot;
+	public AudioSource Killed;
 	public float speed; //variable for speed of the spaceship
 	public float score = 0; //score holder
 	public GameObject scoreInGame; //adding game object for score text
@@ -13,18 +15,23 @@ public class SpaceShipBehavior : MonoBehaviour {
 	private float projectileVelocity; //variable for velocity of the projectiles
 	// Use this for initialization
 	void Start () {
+		AudioSource[] audios = GetComponents<AudioSource> ();
+		Killed = audios [0];
+		Shoot = audios [1];
 		projectileVelocity = 6; //stating projectile velocity
 		DontDestroyOnLoad (gameObject);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		score += Time.deltaTime; //score will increase each second 
 		scoreInGame.gameObject.GetComponent<Text>().text = ("Score: " + (int)score); //checking score every frame and printing in textbox what it is
-		if (Input.GetButtonDown ("Jump"))  //if the spacebar is pressed 
+		if (Input.GetKeyDown (KeyCode.Space))  //if the spacebar is pressed 
 		{
 			GameObject bullet = (GameObject)Instantiate (projectilePrefabs, transform.position, Quaternion.identity); //create a projectile object in the current position
 			Projectiles.Add (bullet); //add actual projectial or bullet to scene
+			Shoot.Play();
 		}
 
 		for (int i = 0; i < Projectiles.Count; i++) { //loop to see how many projectiles are in the scene
@@ -61,20 +68,19 @@ void OnCollisionEnter2D(Collision2D collision) //when you collide with enemy
 	{
 		PlayerPrefs.SetFloat ("Score", (int)score);
 		if (collision.gameObject.tag.Equals ("badGuy")) { //if the player collides with a enemey
+			Killed.Play();
 			Destroy (collision.gameObject); //get rid of that enemy
-			Destroy (gameObject);
-			SceneManager.LoadScene (2);
-
+			Destroy (gameObject, Killed.clip.length);
+			SceneManager.LoadScene (2); //if the player dies, go to end screen
 		}
 		if (collision.gameObject.tag.Equals ("bullet2")) { //if the player collides with a bullet
+			Killed.Play();
 			Destroy (collision.gameObject); //get rid of that bullet
-			Destroy (gameObject); //destroy player
+			Destroy (gameObject, Killed.clip.length); //destroy player
 			SceneManager.LoadScene (2); //if the player dies, go to end screen
-
 		}
 			
 	}
-
-
+		
 
 }
