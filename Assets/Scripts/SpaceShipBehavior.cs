@@ -5,8 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SpaceShipBehavior : MonoBehaviour {
-	public AudioSource Shoot;
-	public AudioSource Killed;
+	public AudioSource Shoot; //audio source variable
+	public AudioSource Killed; // audio source variable
 	public float speed; //variable for speed of the spaceship
 	public float score = 0; //score holder
 	public GameObject scoreInGame; //adding game object for score text
@@ -15,11 +15,11 @@ public class SpaceShipBehavior : MonoBehaviour {
 	private float projectileVelocity; //variable for velocity of the projectiles
 	// Use this for initialization
 	void Start () {
-		AudioSource[] audios = GetComponents<AudioSource> ();
-		Killed = audios [0];
+		AudioSource[] audios = GetComponents<AudioSource> (); //making an array of audio sources 
+		Killed = audios [0]; //assigning audio sources in array
 		Shoot = audios [1];
 		projectileVelocity = 6; //stating projectile velocity
-		DontDestroyOnLoad (gameObject);
+		DontDestroyOnLoad (gameObject); 
 
 	}
 	
@@ -31,7 +31,7 @@ public class SpaceShipBehavior : MonoBehaviour {
 		{
 			GameObject bullet = (GameObject)Instantiate (projectilePrefabs, transform.position, Quaternion.identity); //create a projectile object in the current position
 			Projectiles.Add (bullet); //add actual projectial or bullet to scene
-			Shoot.Play();
+			Shoot.Play(); //play shooting sound
 		}
 
 		for (int i = 0; i < Projectiles.Count; i++) { //loop to see how many projectiles are in the scene
@@ -68,15 +68,15 @@ void OnCollisionEnter2D(Collision2D collision) //when you collide with enemy
 	{
 		PlayerPrefs.SetFloat ("Score", (int)score);
 		if (collision.gameObject.tag.Equals ("badGuy")) { //if the player collides with a enemey
-			Killed.Play();
+			Killed.Play(); //play the killed audio source
 			Destroy (collision.gameObject); //get rid of that enemy
-			Destroy (gameObject, Killed.clip.length);
+			Destroy (gameObject, Killed.clip.length); //destroy the object after the sound is played
 			SceneManager.LoadScene (2); //if the player dies, go to end screen
 		}
 		if (collision.gameObject.tag.Equals ("bullet2")) { //if the player collides with a bullet
-			Killed.Play();
+			Killed.Play(); //play the killed audio source
 			Destroy (collision.gameObject); //get rid of that bullet
-			Destroy (gameObject, Killed.clip.length); //destroy player
+			Destroy (gameObject, Killed.clip.length); //destroy player after the sound is played
 			SceneManager.LoadScene (2); //if the player dies, go to end screen
 		}
 			

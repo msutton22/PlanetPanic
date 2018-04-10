@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class projectile2Code : MonoBehaviour {
-	public AudioSource explosion;
+	public AudioSource explosion; //explosion audio source
 	// Use this for initialization
 	void Start () {
 		

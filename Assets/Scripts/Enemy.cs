@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
-	public AudioSource Explosion;
+	public AudioSource Explosion; //explosion audio source variable
 	public int speed; //speed of enemies moving
 	public int xMoveDirection; //direction that enemies will go
 	private List<GameObject> Projectiles2 = new List<GameObject>(); //creating projectiles for enemy 
@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour {
 	public GameObject projectile2Prefab; //prefab for projectiles
 	float nextSpawn = 0.0f;  //time for next spawn
 	public float spawnRate; //rate at which enemies will spawn
-	public float timer = 0.0f;
+	public float timer = 0.0f; //timer created
 
 
 	// Use this for initialization
@@ -31,16 +31,16 @@ public class Enemy : MonoBehaviour {
 
 		if (Time.time > nextSpawn) {
 			nextSpawn = Time.time + spawnRate; // The time it takes for a new enemy to spawn
-			GameObject bullet = (GameObject)Instantiate (projectile2Prefab, transform.position, Quaternion.identity);
+			GameObject bullet = (GameObject)Instantiate (projectile2Prefab, transform.position, Quaternion.identity); //creating new bullets
 			Projectiles2.Add (bullet); //adding bullets to the scene
-			projectileVelocity += 0.2f;
+			projectileVelocity += 0.2f; //adding to velocity of projectiles
 
 		}
 		for (int i = 0; i < Projectiles2.Count; i++) {
-			GameObject goBullet = Projectiles2 [i];
+			GameObject goBullet = Projectiles2 [i]; //loops to check whether the bullets should be deleted or not
 			if (goBullet != null) {
 				goBullet.transform.Translate (new Vector3 (0, -1) * Time.deltaTime * projectileVelocity);
-				Vector3 bulletScreenPos = Camera.main.WorldToScreenPoint (goBullet.transform.position);
+				Vector3 bulletScreenPos = Camera.main.WorldToScreenPoint (goBullet.transform.position); //based on screen position delete bullets
 				if (bulletScreenPos.y <= 0) {
 					DestroyObject (goBullet);
 					Projectiles2.Remove (goBullet);
@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision) //when enemy collides with a bullet
 	{
 		if (collision.gameObject.tag.Equals ("bullet")) { //if the enemy collides with a bullet
-			Explosion.Play();
+			Explosion.Play(); //play explosion audio source
 			Destroy (collision.gameObject ); //get rid of that bullet
 			Destroy(gameObject, Explosion.clip.length); //destroy enemy		
 
